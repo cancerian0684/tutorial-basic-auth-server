@@ -39,20 +39,24 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
                 .authenticationEntryPoint { _, httpServletResponse, e -> httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED) }
                 .and()
                 .authorizeRequests()
-                    .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                    .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
-                    .antMatchers("/api/**").authenticated()
-                    .anyRequest().authenticated()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                .antMatchers("/api/**").authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
     }
 
     @Throws(Exception::class)
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.inMemoryAuthentication()
-                .withUser("user1").password("{noop}password").authorities("USER")
+                .withUser("user1")
+                .password("{noop}password")
+                .authorities("USER")
                 .and()
-                .withUser("user2").password("{noop}admin").authorities("ADMIN")
+                .withUser("user2")
+                .password("{noop}admin")
+                .authorities("ADMIN")
     }
 }

@@ -28,13 +28,15 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile('org.jetbrains.kotlin:kotlin-reflect')
+	
+	compile 'org.springframework.boot:spring-boot-starter-security'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 compileKotlin {
 	kotlinOptions {
