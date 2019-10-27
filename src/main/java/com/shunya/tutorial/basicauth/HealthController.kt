@@ -13,9 +13,8 @@ class HelloController {
 
 }
 
-data class Health(
-        val status: String
-) {
+data class Health(val status: String) {
+
     companion object {
         val UP = Health("UP")
     }
